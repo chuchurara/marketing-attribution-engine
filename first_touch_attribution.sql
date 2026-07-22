@@ -11,8 +11,8 @@ WITH matched_customer_journeys AS (
     c.click_timestamp,
     ROW_NUMBER() OVER (
       PARTITION BY t.order_id 
-      ORDER BY c.click_timestamp DESC
-    ) AS touch_sequence_descending
+      ORDER BY c.click_timestamp ASC
+    ) AS touch_sequence_ascending
   FROM 
     marketing_analytics.sales_transactions t
   INNER JOIN 
@@ -33,4 +33,4 @@ SELECT
 FROM 
   matched_customer_journeys
 WHERE 
-  touch_sequence_descending = 1
+  touch_sequence_ascending = 1;
