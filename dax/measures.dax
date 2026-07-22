@@ -1,0 +1,8 @@
+Attribution Model Variance % = DIVIDE([Last Touch Revenue] - [First Touch Revenue], [First Touch Revenue], 0)
+Blended CAC = DIVIDE([True Total Ad Spend], [Total Orders Converted], 0)
+First Touch Revenue = SUM(view_first_touch_attribution[revenue_usd])
+First Touch ROAS = DIVIDE([First Touch Revenue], [True Total Ad Spend], 0)
+Last Touch Revenue = SUM(view_last_touch_attribution[revenue_usd])
+Last Touch ROAS = DIVIDE([Last Touch Revenue], [True Total Ad Spend], 0)
+Total Orders Converted = DISTINCTCOUNT(view_first_touch_attribution[order_id])
+True Total Ad Spend = SUM(ad_clicks[click_cost])
